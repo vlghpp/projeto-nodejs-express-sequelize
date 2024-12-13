@@ -8,6 +8,16 @@ class PeopleController extends Controller{
     constructor(){
         super(peopleServices)
     }
+
+    async getLicenses(req, res){
+        const { idEstudante } = req.params
+        try {
+            const listLicenses = await peopleServices.getLicensesByStudent(Number(idEstudante))
+            return res.status(200).json(listLicenses)
+        } catch (error) {
+            //erro
+        }
+    }
 }
 
 
